@@ -15,6 +15,9 @@ def pandas_read_sql(query, params=[]):
     return df
 
 def get():
-    query = "SELECT TOP 10 * FROM whoop"
-
-    return pandas_read_sql(query)
+    try:
+        query = "SELECT TOP 10 * FROM whoop"
+        df = pandas_read_sql(query)
+    except:
+        df = pd.DataFrame([['No Database Connection']])
+    return df
