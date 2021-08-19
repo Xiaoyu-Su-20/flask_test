@@ -1,9 +1,4 @@
-from flask import Blueprint, render_template, url_for, flash, redirect, request, abort
-from flask_login import login_user, current_user, logout_user, login_required
-
-import requests
-
-from package.user.forms import LoginForm
+from flask import Blueprint
 
 user = Blueprint("user", __name__)
 
