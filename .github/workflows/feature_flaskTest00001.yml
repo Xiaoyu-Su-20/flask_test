@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'flaskTest00001'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_e5b7976fd5e04ff181af20d52d2dd3b7 }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1f2bc43d15d2479cb37c90a7525715ab }}
