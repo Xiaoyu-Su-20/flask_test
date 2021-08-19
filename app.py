@@ -7,13 +7,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    df = get()
-    return render_template("home.html", df=str(df))
+    return "hello world"
 
-
-# production
-if __name__ == "__main__":
-    serve(app, port=80)
 
 # # development
 # if __name__ == "__main__":
