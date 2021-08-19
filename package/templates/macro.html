@@ -1,0 +1,110 @@
+{% macro Navbar_layout(current_user) %}
+<!-- Navbar Right Side -->
+<div class="navbar-nav navbar-right">
+  {% if current_user.is_authenticated %}
+  <a class="nav-item" href="{{ url_for('user.logout') }}"> 
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+      <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+    </svg>
+    Logout
+  </a>
+  {% else %}
+  <a class="nav-item" href="{{ url_for('user.login') }}">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+      class="bi bi-box-arrow-in-right me-1" viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+        d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+      <path fill-rule="evenodd"
+        d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+    </svg>
+    Login
+  </a>
+  {% endif %}
+
+</div>
+{% endmacro %}
+
+{% macro Footer_layout() %}
+<footer class="text-center text-white">
+  <!-- <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+  </div> -->
+
+  <div id="footer_img">
+    <a class="navbar-brand me-5" href="/"
+    ><img
+      class="logo"
+      src="{{url_for('static', filename='/pics/rc-logo-small.png')}}"
+      style="width: 40px; height:40px"
+  /></a>
+  </div>
+
+
+  <!-- Grid container -->
+  <div class="container pb-5">
+
+    <section class="icons mb-1">
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/resiliencecode/" role="button"
+        target="_blank">
+        <i class="fab fa-facebook"></i></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/resiliencecode" role="button"
+        target="_blank">
+        <i class="fab fa-twitter"></i></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/resiliencecode/" role="button"
+        target="_blank">
+        <i class="fab fa-instagram"></i></a>
+
+    </section>
+  </div>
+
+  <!-- Copyright -->
+  <div class="bottom_text text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    <div>
+      <a href="mailto: info@myresiliencecode.com">info@myresiliencecode.com</a>
+      <a>| (303) 577-1916</a>
+    </div>
+    <a class="text-white" href="https://www.google.com/maps/place/99+Inverness+Dr+E,+Englewood,+CO+80112/"
+      target="_blank">
+      99 Inverness Drive East Englewood 80112
+    </a>
+  </div>
+
+  <!-- Copyright -->
+</footer>
+
+<style>
+  div#footer_img {
+    margin: 20px auto 20px auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  div#footer_img img{
+    margin-left:50px;
+  }
+
+  div.bottom_text {
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  div.bottom_text a {
+    color: aliceblue;
+  }
+
+  a.btn {
+    color: rgb(24, 118, 226);
+    border: none;
+  }
+
+  a.btn:hover {
+    border: none;
+    filter: brightness(120%);
+    color: rgb(24, 118, 226);
+    background-color: aliceblue;
+  }
+</style>
+{% endmacro %}
+

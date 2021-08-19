@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div id="login_panel">
+    <div class='content-section'>
+        <legend class='text-center mb-2'>Login</legend>
+        
+        <div id="notes" class="mb-4">
+            <small class='text-muted' id='forgot'>
+                Note: Use MDHQ credentials.
+            </small>    
+        </div>
+
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            
+            <fieldset class='form-group'>
+                
+                <div class='form-group mb-4'>
+
+                    {% if form.id.errors %}
+                        <div class="icon_and_form">
+                            <svg class="login_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                            </svg>
+                            {{ form.id(class="form-control form-control-lg is-invalid") }}
+                        </div>
+                    {% else %}
+                    <div class="icon_and_form">
+                        <svg class="login_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                        {{ form.id(class="form-control form-control-lg", placeholder="Username") }}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class='form-group mb-4'>
+
+                    {% if form.password.errors %}
+                    <div class="icon_and_form">
+                        <svg class="login_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                        </svg>
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                    </div>
+                    {% else %}
+                    <div class="icon_and_form">  
+                        <svg class="login_icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
+                        </svg>
+                        {{ form.password(class="form-control form-control-lg", placeholder="Password") }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class='form-check mb-4'>
+                    {{ form.remember(class='form-check-input') }}
+                    {{ form.remember.label(class='form-check-label') }}
+                </div>
+
+            </fieldset>
+
+            <div id='login_button' class="mb-4">
+            {{ form.submit(class='btn btn-outline-info')}}
+            </div>
+            <!-- <small class='text-muted mt-3' id='forgot'>
+                <a href="#" > Forgot Password?</a>
+            </small>     -->
+
+        </form>
+    </div>
+
+</div>
+
+<style>
+    :root {
+        --login_panel_margin_left: 40px;
+        --login_panel_margin_right: 50px;
+        --login_panel_width: 40%;
+    }
+
+    body {
+        overflow: hidden;
+        background-color: rgb(231, 211, 178);
+    }
+
+    legend {
+        font-size: 3em;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+
+    div#login_panel {
+        margin-top: 40px !important;
+    }
+
+    div.content-section {
+        width:var(--login_panel_width) !important;
+        height: 450px;
+    }
+
+    div.alert {
+        width:var(--login_panel_width) !important;
+        border-radius: 10px;
+    }
+
+    div.icon_and_form {
+        margin-left: var(--login_panel_margin_left);
+        margin-right: var(--login_panel_margin_right);
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .form-control {
+        border-width: 0 0 1px 0 !important;
+        border-radius: 0;
+    }
+
+    label {
+        margin-left: 5px;
+    }
+
+    .form-control:active, .form-control:focus {
+        box-shadow: none;  
+    }
+
+    div.form-check {
+        margin-left: calc(var(--login_panel_margin_left) + 3px);
+    }
+
+    input.btn {
+        width: 200px !important;
+        border-radius: 20px;
+    }
+
+    div#login_button {
+        display: flex;
+        justify-content: center !important;
+    }
+
+    svg.login_icon {
+      margin-top: 18px;  
+      margin-right: 6px;
+      width: 24px;
+      height:24px;
+    }
+
+    div#notes {
+        text-align: center;
+    }
+</style>
+
+{% endblock content %}

@@ -9,3 +9,10 @@ app.config.from_object(Config)
 def home():
     df = get()
     return render_template("home.html", df=str(df))
+
+
+# setup Blueprints
+from package.user.routes import user
+from package.main.routes import main
+app.register_blueprint(user)
+app.register_blueprint(main)

@@ -1,0 +1,105 @@
+{% from "macro.html" import Navbar_layout, Footer_layout %}
+
+{% set api_path= '127.0.0.1:5001/rc_api' %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+
+    <title>RCode Dashboard</title>
+  </head>
+
+  <body>
+    <div id="page-container">
+      <header class="site-header">
+        <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="navbar">
+          <div class="container-fluid">
+            <a class="navbar-brand me-5" href="/"
+              ><img
+                class="logo"
+                src="{{url_for('static', filename='/pics/rc-logo-long.png')}}"
+            /></a>
+            <button
+              style="background-color: rgb(243, 226, 200)"
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarToggle"
+              aria-controls="navbarToggle"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+              {{Navbar_layout(current_user)}}
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <div id="content-wrap">
+        <div class="row d-flex justify-content-center">
+          <div>
+            {% with messages = get_flashed_messages(with_categories=True) %} {%
+            if messages %} {% for category, message in messages%}
+            <div
+              class="alert alert-{{ category }}"
+              style="width: 65%; margin-left: auto; margin-right: auto"
+            >
+              {{ message }}
+            </div>
+            {% endfor %} {% endif %} {% endwith %} 
+            {% block content %}{%endblock %}
+          </div>
+        </div>
+      </div>
+
+      {% if ('login' not in request.path) and ('register' not in request.path) and (('master' not in request.path))
+      %} {{Footer_layout()}} {% endif %}
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    window.onscroll = function () {
+      const offSet = 70;
+      var currentScrollPos = window.pageYOffset;
+      if (currentScrollPos < offSet) {
+        document.getElementById("navbar").style.top = "0px";
+      } else {
+        document.getElementById("navbar").style.top = "-100px";
+      }
+      prevScrollpos = currentScrollPos;
+    };
+  </script>
+
+  <style>
+    :root {
+      --on_page_background:#db9898;
+    }
+  </style>
+</html>
